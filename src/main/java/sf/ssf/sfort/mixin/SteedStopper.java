@@ -15,7 +15,7 @@ import java.util.Random;
 public class SteedStopper {
 	@Inject(method = "isValidNaturalSpawn", at = @At("HEAD"), cancellable = true)
 	private static void isValidNaturalSpawn(EntityType<? extends AnimalEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> info) {
-		if (type.equals(EntityType.DONKEY)||type.equals(EntityType.HORSE)||type.equals(EntityType.SKELETON_HORSE)||type.equals(EntityType.ZOMBIE_HORSE)){
+		if ((type.equals(EntityType.DONKEY)||type.equals(EntityType.HORSE)||type.equals(EntityType.SKELETON_HORSE)||type.equals(EntityType.ZOMBIE_HORSE)) && spawnReason == SpawnReason.NATURAL){
 			info.setReturnValue(false);
 		}
 	}
